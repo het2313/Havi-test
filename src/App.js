@@ -45,7 +45,9 @@ function App() {
   };
   const addNotes = async () => {
     await axios
-      .put(`http://localhost:5000/api/addnote/${id}/${notes}`)
+      .put(
+        `https://immense-everglades-90826.herokuapp.com/api/addnote/${id}/${notes}`
+      )
       .then((data) => {
         console.log(data.data);
         setUsers(data.data);
@@ -54,13 +56,17 @@ function App() {
   };
   useEffect(() => {
     if (role === "All") {
-      axios.get("http://localhost:5000/api/users").then((data) => {
-        console.log(data.data);
-        setUsers(data.data);
-      });
+      axios
+        .get("https://immense-everglades-90826.herokuapp.com/api/users")
+        .then((data) => {
+          console.log(data.data);
+          setUsers(data.data);
+        });
     } else {
       axios
-        .get(`http://localhost:5000/api/filterbytag/${role}`)
+        .get(
+          `https://immense-everglades-90826.herokuapp.com/api/filterbytag/${role}`
+        )
         .then((data) => {
           console.log(data.data);
           setUsers(data.data);
@@ -127,7 +133,9 @@ function App() {
                 onChange={(e) => {
                   if (e.target.value.length < 1) {
                     axios
-                      .get(`http://localhost:5000/api/users`)
+                      .get(
+                        `https://immense-everglades-90826.herokuapp.com/api/users`
+                      )
                       .then((data) => {
                         console.log("data", data.data);
                         setUsers(data.data);
@@ -136,7 +144,7 @@ function App() {
                     if (filter === "Firstname") {
                       axios
                         .get(
-                          `http://localhost:5000/api/filterbyfn/${e.target.value}`
+                          `https://immense-everglades-90826.herokuapp.com/api/filterbyfn/${e.target.value}`
                         )
                         .then((data) => {
                           console.log("data", data.data);
@@ -145,7 +153,7 @@ function App() {
                     } else if (filter === "Age") {
                       axios
                         .get(
-                          `http://localhost:5000/api/filterbyage/${e.target.value}`
+                          `https://immense-everglades-90826.herokuapp.com/api/filterbyage/${e.target.value}`
                         )
                         .then((data) => {
                           console.log("data", data.data);
@@ -154,7 +162,7 @@ function App() {
                     } else {
                       axios
                         .get(
-                          `http://localhost:5000/api/filterbynote/${e.target.value}`
+                          `https://immense-everglades-90826.herokuapp.com/api/filterbynote/${e.target.value}`
                         )
                         .then((data) => {
                           console.log("data", data.data);
