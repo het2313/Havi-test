@@ -29,7 +29,9 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
-  const API = axios.create({ baseURL: "http://localhost:5000/api" });
+  const API = axios.create({
+    baseURL: "https://immense-everglades-90826.herokuapp.com/api",
+  });
   const [form, setForm] = React.useState({
     email: "",
     password: "",
@@ -49,7 +51,10 @@ function App() {
   };
 
   const onSubmit = () => {
-    axios.post("http://localhost:5000/api/users", form);
+    axios.post(
+      "https://immense-everglades-90826.herokuapp.com/api/users",
+      form
+    );
   };
   return (
     <div
